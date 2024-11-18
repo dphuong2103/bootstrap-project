@@ -1,0 +1,20 @@
+version: '3.3'
+networks:
+  redis-network:
+    name: redis-network
+
+services:
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis-data:/data
+    environment:
+      - REDIS_PASSWORD=mYflSeyFQdKKAb0
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
+    networks:
+      - redis

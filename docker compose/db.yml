@@ -1,0 +1,22 @@
+version: '3.3'
+networks:
+  db-network:
+    external: true
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: SuperSecretPassword@1234
+      MYSQL_DATABASE: movie
+      MYSQL_USER: user
+      MYSQL_PASSWORD: SuperSecretPassword@1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - db-network
+
+volumes:
+  db-data:
